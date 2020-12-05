@@ -13,5 +13,12 @@ namespace Staff.Domain
             Position = position ?? throw new ArgumentNullException(nameof(position));
             HireDate = hireDate;
         }
+
+        public static EmployeePosition FromPersistence(Position position, DateTime hireDate, DateTime? fireDate)
+        {
+            var employeePosition = new EmployeePosition(position, hireDate);
+            employeePosition.FireDate = fireDate;
+            return employeePosition;
+        }
     }
 }

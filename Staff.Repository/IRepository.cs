@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Staff.Repository
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> Get();
-        T Get(Guid id);
-        void Insert(T entity);
-        void Delete(Guid id);
-        void Update(T entity);
+        Task<IEnumerable<T>> GetAsync();
+        Task<T> GetAsync(Guid id);
+        Task InsertAsync(T entity);
+        Task DeleteAsync(Guid id);
+        Task UpdateAsync(T entity);
     }
 }

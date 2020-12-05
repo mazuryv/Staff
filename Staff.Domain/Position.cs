@@ -7,10 +7,17 @@ namespace Staff.Domain
         public Guid Id { get; }
         public string Description { get; }
 
-        public Position(string description)
+        private Position(Guid id, string description)
         {
-            Id = new Guid();
+            Id = id;
             Description = description;
+        }
+
+        public Position(string description) : this(Guid.NewGuid(), description) { }
+
+        public static Position FromPersistence(Guid id, string description)
+        {
+            return new Position(id, description);
         }
     }
 }

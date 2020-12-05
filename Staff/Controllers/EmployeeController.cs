@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
+using Staff.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,25 +11,19 @@ namespace Staff.Controllers
     [Route("[controller]")]
     public class EmployeeController : ControllerBase
     {
-        private readonly ILogger<EmployeeController> _logger;
-
-        public EmployeeController(ILogger<EmployeeController> logger)
+        private readonly ILogger<EmployeeController> logger;
+        private readonly IEmployeeRepository employeeRepository;
+        public EmployeeController(ILogger<EmployeeController> logger, IEmployeeRepository employeeRepository)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.employeeRepository = employeeRepository;
         }
 
         [HttpGet]
-        public IEnumerable<EmployeeSummary> Get()
+        public async Task<IEnumerable<EmployeeSummary>> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new EmployeeSummary
-            {
-                Position = "Test1",
-                FullName = "Employee",
-                Salary = "100$",
-                HireDate = DateTime.Now.Date.AddDays(-index)
-            })
-            .ToArray();
+            var employees = await employeeRepository.GetAsync();
+            return employees.Select(domain => EmployeeSummary.FromDomain(domain));
         }
     }
 }

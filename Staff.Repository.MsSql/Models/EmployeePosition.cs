@@ -8,8 +8,8 @@ namespace Staff.Repository.MsSql.Models
     {
         public Guid Id { get; set; }
         public Guid EmployeeId { get; set; }
-        public Guid PositionId { get; set; }
-        public DateTime? HireDate { get; set; }
+        public Position Position { get; set; }
+        public DateTime HireDate { get; set; }
         public DateTime? FireDate { get; set; }
     }
 }

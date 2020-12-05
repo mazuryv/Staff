@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace Staff.Repository.MsSql.Models
 {
@@ -13,5 +13,15 @@ namespace Staff.Repository.MsSql.Models
         public DateTime HireDate { get; set; }
         public DateTime? FireDate { get; set; }
         public ICollection<EmployeePosition> EmployeePositions { get; set; }
+
+        public Staff.Domain.Employee ToDomain()
+        {
+            var employeePositions = EmployeePositions
+                .Select(position => Domain.EmployeePosition.FromPersistence(
+                    Domain.Position.FromPersistence(position.Position.Id, position.Position.Description), 
+                    position.HireDate, 
+                    position.FireDate));
+            return Domain.Employee.FromPersistence(Id, FirstName, LastName, Salary, HireDate, FireDate, employeePositions);
+        }
     }
 }

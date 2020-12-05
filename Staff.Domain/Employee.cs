@@ -15,15 +15,41 @@ namespace Staff.Domain
         public DateTime? FireDate { get; private set; }
         public IEnumerable<EmployeePosition> EmployeePositions { get => employeePositions; }
 
-        public Employee(string firstName, string lastName, string salary, DateTime hireDate)
+        private Employee(
+            Guid id,
+            string firstName,
+            string lastName,
+            string salary,
+            DateTime hireDate,
+            DateTime? fireDate = null,
+            IEnumerable<EmployeePosition> employeePositions = null)
         {
-            Id = new Guid();
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Salary = salary;
             HireDate = hireDate;
+            FireDate = fireDate;
+            if (employeePositions != null)
+            {
+                this.employeePositions = new List<EmployeePosition>(employeePositions);
+            }
         }
 
+        public Employee(string firstName, string lastName, string salary, DateTime hireDate)
+            : this(Guid.NewGuid(), firstName, lastName, salary, hireDate) { }
+
+        public static Employee FromPersistence(
+            Guid id,
+            string firstName,
+            string lastName,
+            string salary,
+            DateTime hireDate,
+            DateTime? fireDate,
+            IEnumerable<EmployeePosition> employeePositions)
+        {
+            return new Employee(id, firstName, lastName, salary, hireDate, fireDate, employeePositions);
+        }
         public void ChangePosition(Position position, DateTime hireDate)
         {
             if (position == null)
@@ -31,11 +57,14 @@ namespace Staff.Domain
                 throw new ArgumentNullException(nameof(position));
             }
             var lastPosition = GetLastPosition();
-            if (position == lastPosition.Position)
+            if (lastPosition!=null)
             {
-                throw new InvalidOperationException("Adding same possition is not allowed");
+                if (position == lastPosition.Position)
+                {
+                    throw new InvalidOperationException("Adding same possition is not allowed");
+                }
+                lastPosition.FireDate = hireDate;
             }
-            lastPosition.FireDate = hireDate;
             employeePositions.Add(new EmployeePosition(position, hireDate));
         }
 

@@ -10,6 +10,7 @@ namespace Staff.Repository.MsSql
         public static void AddMsSqlRepository(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IPositionRepository, PositionRepository>();
             services.AddDbContext<StaffContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("StaffContext")));
         }
