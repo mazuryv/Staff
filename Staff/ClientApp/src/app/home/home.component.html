@@ -1,28 +1,39 @@
-<h1 id="tableLabel">Staff WebApplication</h1>
-
-<p>Сотрудники</p>
+<div class="container">
+  <h1 id="tableLabel">Сотрудники</h1>
+</div>
 
 <p *ngIf="!employees"><em>Loading...</em></p>
-
-<table class="table table-striped text-center" aria-labelledby="tableLabel" *ngIf="employees">
-  <thead class="staff-thead-darkgrey">
-    <tr>
-      <th>#</th>
-      <th>Должность</th>
-      <th>Сотрудник</th>
-      <th>Оклад</th>
-      <th>Дата назначения</th>
-      <th>Дата увольнения</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let employee of employees;let i= index">
-      <td>{{ i+1 }}</td>
-      <td>{{ employee.position }}</td>
-      <td>{{ employee.fullName }}</td>
-      <td>{{ employee.salary}}</td>
-      <td>{{ employee.hireDate | date:'dd/MM/yyyy' }}</td>
-      <td>{{ employee.fireDate | date:'dd/MM/yyyy' }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="container mb-2">
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <button class="btn btn-primary btn-block">Добавить сотрудника</button>
+    </div>
+    <div class="col-4">
+      <button class="btn btn-primary btn-block">Добавить должность</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-striped text-center" aria-labelledby="tableLabel" *ngIf="employees">
+    <thead class="staff-thead-darkgrey">
+      <tr>
+        <th>#</th>
+        <th>Должность</th>
+        <th>Сотрудник</th>
+        <th>Оклад</th>
+        <th>Дата назначения</th>
+        <th>Дата увольнения</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees;let i= index">
+        <td>{{ i+1 }}</td>
+        <td>{{ employee.position }}</td>
+        <td>{{ employee.fullName }}</td>
+        <td>{{ employee.salary}}</td>
+        <td>{{ employee.hireDate | date:'dd/MM/yyyy' }}</td>
+        <td>{{ employee.fireDate | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
