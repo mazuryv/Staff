@@ -14,3 +14,11 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+th {
+  font-weight: normal;
+}
+
+.staff-thead-darkgrey {
+  background: darkgray;
+}
