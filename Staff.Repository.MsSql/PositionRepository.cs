@@ -20,7 +20,7 @@ namespace Staff.Repository.MsSql
             var isDublicate = await staffContext.Positions.AnyAsync(position => position.Description == entity.Description);
             if (isDublicate)
             {
-                throw new InvalidOperationException($"Position with description \"{entity.Description}\"have already been added");
+                throw new InvalidOperationException($"Position with description \"{entity.Description}\" have already been added");
             }
             var record = new Models.Position()
             {

@@ -31,9 +31,9 @@ namespace Staff.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(EmployeeDto employeeDto)
         {
-            if (!(string.IsNullOrEmpty(employeeDto.FirstName) 
-                && string.IsNullOrEmpty(employeeDto.LastName)
-                && string.IsNullOrEmpty(employeeDto.Salary)))
+            if (string.IsNullOrEmpty(employeeDto.FirstName) 
+                || string.IsNullOrEmpty(employeeDto.LastName)
+                || string.IsNullOrEmpty(employeeDto.Salary))
             {
                 return StatusCode(StatusCodes.Status422UnprocessableEntity);
             }

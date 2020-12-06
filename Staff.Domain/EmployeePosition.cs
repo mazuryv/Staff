@@ -16,8 +16,10 @@ namespace Staff.Domain
 
         public static EmployeePosition FromPersistence(Position position, DateTime hireDate, DateTime? fireDate)
         {
-            var employeePosition = new EmployeePosition(position, hireDate);
-            employeePosition.FireDate = fireDate;
+            var employeePosition = new EmployeePosition(position, hireDate)
+            {
+                FireDate = fireDate
+            };
             return employeePosition;
         }
     }

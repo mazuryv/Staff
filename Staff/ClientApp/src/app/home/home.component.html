@@ -3,13 +3,13 @@
 </div>
 
 <p *ngIf="!employees"><em>Loading...</em></p>
-<div class="container mb-2">
+<div class="container mb-2" *ngIf="employees">
   <div class="row justify-content-between">
     <div class="col-4">
-      <button class="btn btn-primary btn-block">Добавить сотрудника</button>
+      <button class="btn btn-primary btn-block" (click)="openAddEmployeePopup()">Добавить сотрудника</button>
     </div>
     <div class="col-4">
-      <button class="btn btn-primary btn-block">Добавить должность</button>
+      <add-position-popup></add-position-popup>
     </div>
   </div>
 </div>

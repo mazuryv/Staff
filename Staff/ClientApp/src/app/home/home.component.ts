@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
+
 export class HomeComponent {
   public employees: EmployeeSummary[];
 
@@ -16,6 +17,7 @@ export class HomeComponent {
 }
 
 interface EmployeeSummary {
+  id: string,
   position: string;
   fullName: string;
   salary: string;

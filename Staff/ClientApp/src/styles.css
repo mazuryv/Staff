@@ -22,3 +22,11 @@ th {
 .staff-thead-darkgrey {
   background: darkgray;
 }
+.modal-dialog,
+.modal-content {
+  height: 50%;
+}
+
+.modal-body {
+  max-height: calc(100% - 120px);
+}

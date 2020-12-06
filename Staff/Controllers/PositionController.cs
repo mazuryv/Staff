@@ -31,7 +31,7 @@ namespace Staff.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(PositionDto positionDto)
         {
-            if (!string.IsNullOrEmpty(positionDto.Description))
+            if (string.IsNullOrEmpty(positionDto.Description))
             {
                 return StatusCode(StatusCodes.Status422UnprocessableEntity);
             }
