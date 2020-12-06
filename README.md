@@ -1,5 +1,8 @@
 # Staff
 My first experience with Angular and Entity Framework
 
-From NuGet Package Manager > Package Manager Console (PMC).
+# Instructions:
+- Clone from repository to Visual Studio
+- From NuGet Package Manager > Package Manager Console (PMC) execute command:
 Update-Database
+- Start IIS Express
