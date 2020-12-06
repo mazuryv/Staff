@@ -1,2 +1,2 @@
 # Staff
-My first experience with Angular and Enity Framework
+My first experience with Angular and Entity Framework
