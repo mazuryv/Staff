@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Staff.Repository.MsSql.Models
 {
@@ -8,5 +6,10 @@ namespace Staff.Repository.MsSql.Models
     {
         public Guid Id { get; set; }
         public string Description { get; set; }
+
+        public Domain.Position ToDomain()
+        {
+            return Domain.Position.FromPersistence(Id, Description);
+        }
     }
 }

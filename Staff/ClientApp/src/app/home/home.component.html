@@ -6,7 +6,7 @@
 <div class="container mb-2" *ngIf="employees">
   <div class="row justify-content-between">
     <div class="col-4">
-      <button class="btn btn-primary btn-block" (click)="openAddEmployeePopup()">Добавить сотрудника</button>
+      <add-employee-popup (onChanged)="onChanged()"></add-employee-popup>
     </div>
     <div class="col-4">
       <add-position-popup></add-position-popup>

@@ -36,6 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\app\employees\add\popup.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\employees\data.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\employees\employee.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\employees\employeeSummary.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\position\add\popup.component.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\position\data.service.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\position\position.ts" />

@@ -1,0 +1,85 @@
+<button class="btn btn-primary btn-block" (click)="show()">Добавить сотрудника</button>
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Новый сотрудник</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addNewEmployeeForm">
+          <div class="form-group">
+            <div class="row mb-2">
+              <div class="col-6">
+                <input type="text" formControlName="lastName" [(ngModel)]="employee.lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.lastName.errors }" />
+                <div *ngIf="submitted && controls.lastName.errors" class="invalid-feedback">
+                  <div *ngIf="controls.lastName.errors.required">Требуется фамилия</div>
+                </div>
+              </div>
+              <div class="col-6 align-self-center ">
+                <label>Фамилия</label>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <input type="text" formControlName="firstName" [(ngModel)]="employee.firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.firstName.errors }" />
+                <div *ngIf="submitted && controls.firstName.errors" class="invalid-feedback">
+                  <div *ngIf="controls.firstName.errors.required">Требуется имя</div>
+                </div>
+              </div>
+              <div class="col-6 align-self-center ">
+                <label>Имя</label>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <select formControlName="position" [(ngModel)]="employee.positionId" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.position.errors }">
+                  <option *ngFor="let position of positions" [value]="position.id">{{position.description}}</option>
+                </select>
+                <div *ngIf="submitted && controls.position.errors" class="invalid-feedback">
+                  <div *ngIf="controls.position.errors.required">Требуется должность</div>
+                </div>
+              </div>
+              <div class="col-6 align-self-center ">
+                <label>Должность</label>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <input type="text" formControlName="salary" [(ngModel)]="employee.salary" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.salary.errors }" />
+                <div *ngIf="submitted && controls.salary.errors" class="invalid-feedback">
+                  <div *ngIf="controls.salary.errors.required">Требуется оклад</div>
+                </div>
+              </div>
+              <div class="col-6 align-self-center ">
+                <label>Оклад</label>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <input type="date" formControlName="hireDate" [(ngModel)]="employee.hireDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.hireDate.errors }" />
+                <div *ngIf="submitted && controls.hireDate.errors" class="invalid-feedback">
+                  <div *ngIf="controls.hireDate.errors.required">Требуется дата приема на работу</div>
+                </div>
+              </div>
+              <div class="col-6 align-self-center ">
+                <label>Нанят</label>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-6">
+                <input type="date" formControlName="fireDate" [(ngModel)]="employee.fireDate" class="form-control" />
+              </div>
+              <div class="col-6 align-self-center ">
+                <label>Уволен</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="hide()">Закрыть</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>

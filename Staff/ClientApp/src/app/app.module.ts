@@ -7,14 +7,16 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { AddPositionPopupComponent } from './position/add/popup.component';
+import { AddPositionPopupComponent } from './positions/add/popup.component';
+import { AddEmployeePopupComponent } from './employees/add/popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    AddPositionPopupComponent
+    AddPositionPopupComponent,
+    AddEmployeePopupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

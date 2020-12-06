@@ -1,6 +1,5 @@
 <button class="btn btn-primary btn-block" (click)="show()">Добавить должность</button>
 
-<!-- Creates the bootstrap modal where the image will appear -->
 <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -12,7 +11,7 @@
           <div class="form-group">
             <div class="row">
               <div class="col-6">
-                <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.description.errors }" />
+                <input type="text" formControlName="description" [(ngModel)]="position.description" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.description.errors }" />
                 <div *ngIf="submitted && controls.description.errors" class="invalid-feedback">
                   <div *ngIf="controls.description.errors.required">Требуется название должности</div>
                 </div>

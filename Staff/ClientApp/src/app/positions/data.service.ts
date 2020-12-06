@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Position } from './position';
 
 @Injectable()
-export class DataService {
+export class PositionDataService {
 
   private url;
 

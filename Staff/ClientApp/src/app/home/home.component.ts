@@ -1,26 +1,25 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { EmployeeDataService } from './../employees/data.service';
+import { EmployeeSummary } from './../employees/employeeSummary';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  providers: [EmployeeDataService]
 })
 
 export class HomeComponent {
   public employees: EmployeeSummary[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<EmployeeSummary[]>(baseUrl + 'employee').subscribe(result => {
-      this.employees = result;
+  constructor(private dataService: EmployeeDataService) {
+    this.loadEmployees();
+  }
+  onChanged() {
+    this.loadEmployees();
+  }
+  loadEmployees() {
+    this.dataService.getEmployees().subscribe((data: EmployeeSummary[]) => {
+      this.employees = data;
     }, error => console.error(error));
   }
-}
-
-interface EmployeeSummary {
-  id: string,
-  position: string;
-  fullName: string;
-  salary: string;
-  hireDate: string;
-  fireDate: string;
 }
