@@ -12,6 +12,6 @@ namespace Staff
         public string LastName { get; set; }
         public string Salary { get; set; }
         public DateTime? HireDate { get; set; }
-        public DateTime? FireDate { get; set; }
+        public DateTime? DismissalDate { get; set; }
     }
 }

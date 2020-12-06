@@ -19,24 +19,24 @@ export class AddEmployeePopupComponent {
   submitted = false;
   constructor(private dataService: EmployeeDataService, private positionDataService: PositionDataService, private formBuilder: FormBuilder) {}
   show() {
+    this.positionDataService.getPositions()
+      .subscribe((data: Position[]) => {
+        this.positions = data;
+      }, error => console.error(error));
+
     this.showModal = true;
   }
   hide() {
     this.showModal = false;
   }
   ngOnInit() {
-    this.positionDataService.getPositions()
-      .subscribe((data: Position[]) => {
-        this.positions = data;
-      }, error => console.error(error));
-
     this.addNewEmployeeForm = this.formBuilder.group({
       lastName: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
       position: ['', [Validators.required]],
       salary: ['', [Validators.required]],
       hireDate: ['', [Validators.required]],
-      fireDate: ['']
+      dismissalDate: ['']
     });
   }
   get controls() { return this.addNewEmployeeForm.controls; }

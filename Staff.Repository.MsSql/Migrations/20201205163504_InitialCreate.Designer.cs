@@ -27,7 +27,7 @@ namespace Staff.Repository.MsSql.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("FireDate")
+                    b.Property<DateTime?>("DismissalDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
@@ -56,7 +56,7 @@ namespace Staff.Repository.MsSql.Migrations
                     b.Property<Guid>("EmployeeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("FireDate")
+                    b.Property<DateTime?>("DismissalDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("HireDate")

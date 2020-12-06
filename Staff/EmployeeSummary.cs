@@ -11,12 +11,12 @@ namespace Staff
         public string FullName { get; set; }
         public string Salary { get; set; }
         public DateTime HireDate { get; set; }
-        public DateTime? FireDate { get; set; }
+        public DateTime? DismissalDate { get; set; }
 
         public static EmployeeSummary FromDomain(Employee employee)
         {
             var currentPosition = employee.EmployeePositions
-                    .Where(position => employee.FireDate.HasValue ? position.FireDate == employee.FireDate : position.FireDate == null)
+                    .Where(position => employee.DismissalDate.HasValue ? position.DismissalDate == employee.DismissalDate : position.DismissalDate == null)
                     .OrderBy(position => position.HireDate)
                     .LastOrDefault()?.Position.Description;
 
@@ -26,7 +26,7 @@ namespace Staff
                 FullName = $"{employee.LastName} {employee.FirstName}",
                 Salary = employee.Salary,
                 Position = currentPosition,
-                FireDate = employee.FireDate,
+                DismissalDate = employee.DismissalDate,
                 HireDate = employee.HireDate
             };
         }

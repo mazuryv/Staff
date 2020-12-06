@@ -5,6 +5,6 @@ export class EmployeeSummary {
     public fullName?: string,
     public salary?: string,
     public hireDate?: string,
-    public fireDate?: string
+    public dismissalDate?: string
   ) { }
 }

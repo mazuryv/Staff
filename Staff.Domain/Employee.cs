@@ -12,7 +12,7 @@ namespace Staff.Domain
         public string LastName { get; set; }
         public string Salary { get; set; }
         public DateTime HireDate { get; }
-        public DateTime? FireDate { get; private set; }
+        public DateTime? DismissalDate { get; private set; }
         public IEnumerable<EmployeePosition> EmployeePositions { get => employeePositions; }
 
         private Employee(
@@ -29,7 +29,7 @@ namespace Staff.Domain
             LastName = lastName;
             Salary = salary;
             HireDate = hireDate;
-            FireDate = fireDate;
+            DismissalDate = fireDate;
             if (employeePositions != null)
             {
                 this.employeePositions = new List<EmployeePosition>(employeePositions);
@@ -63,19 +63,19 @@ namespace Staff.Domain
                 {
                     throw new InvalidOperationException("Adding same possition is not allowed");
                 }
-                lastPosition.FireDate = hireDate;
+                lastPosition.DismissalDate = hireDate;
             }
             employeePositions.Add(new EmployeePosition(position, hireDate));
         }
 
-        public void FireEmployee(DateTime fireDate)
+        public void DismissalEmployee(DateTime fireDate)
         {
-            FireDate = fireDate;
+            DismissalDate = fireDate;
             var lastPosition = GetLastPosition();
-            lastPosition.FireDate = fireDate;
+            lastPosition.DismissalDate = fireDate;
         }
 
-        private EmployeePosition GetLastPosition() => employeePositions.FirstOrDefault(item => item.FireDate == null);
+        private EmployeePosition GetLastPosition() => employeePositions.FirstOrDefault(item => item.DismissalDate == null);
 
     }
 }

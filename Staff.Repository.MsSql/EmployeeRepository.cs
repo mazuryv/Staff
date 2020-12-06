@@ -33,7 +33,7 @@ namespace Staff.Repository.MsSql
                         EmployeeId = entity.Id,
                         Position = await staffContext.Positions.FirstAsync(p => p.Id == position.Position.Id),
                         HireDate = position.HireDate,
-                        FireDate = position.FireDate
+                        DismissalDate = position.DismissalDate
                     }).ToArray());
 
             var record = new Models.Employee()
@@ -42,7 +42,7 @@ namespace Staff.Repository.MsSql
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 HireDate = entity.HireDate,
-                FireDate = entity.FireDate,
+                DismissalDate = entity.DismissalDate,
                 Salary = entity.Salary,
                 EmployeePositions = employeePositions
             };

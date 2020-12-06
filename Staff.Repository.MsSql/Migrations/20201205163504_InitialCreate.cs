@@ -16,7 +16,7 @@ namespace Staff.Repository.MsSql.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Salary = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FireDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    DismissalDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,7 +43,7 @@ namespace Staff.Repository.MsSql.Migrations
                     EmployeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     HireDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FireDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    DismissalDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

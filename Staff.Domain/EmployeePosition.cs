@@ -6,7 +6,7 @@ namespace Staff.Domain
     {
         public Position Position { get;}
         public DateTime HireDate { get; }
-        public DateTime? FireDate { get; set; }
+        public DateTime? DismissalDate { get; set; }
 
         public EmployeePosition(Position position, DateTime hireDate)
         {
@@ -18,7 +18,7 @@ namespace Staff.Domain
         {
             var employeePosition = new EmployeePosition(position, hireDate)
             {
-                FireDate = fireDate
+                DismissalDate = fireDate
             };
             return employeePosition;
         }

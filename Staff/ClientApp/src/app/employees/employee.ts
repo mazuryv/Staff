@@ -6,6 +6,6 @@ export class Employee {
     public positionId?: string,
     public salary?: string,
     public hireDate?: Date,
-    public fireDate?: Date
+    public dismissalDate?: Date
   ) { }
 }

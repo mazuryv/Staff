@@ -10,6 +10,6 @@ namespace Staff.Repository.MsSql.Models
         public Guid EmployeeId { get; set; }
         public Position Position { get; set; }
         public DateTime HireDate { get; set; }
-        public DateTime? FireDate { get; set; }
+        public DateTime? DismissalDate { get; set; }
     }
 }

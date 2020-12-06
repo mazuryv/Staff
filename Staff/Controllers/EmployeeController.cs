@@ -51,9 +51,9 @@ namespace Staff.Controllers
 
             var employee = new Employee(employeeDto.FirstName, employeeDto.LastName, employeeDto.Salary, employeeDto.HireDate.Value);
             employee.ChangePosition(position, employeeDto.HireDate.Value);
-            if (employeeDto.FireDate.HasValue)
+            if (employeeDto.DismissalDate.HasValue)
             {
-                employee.FireEmployee(employeeDto.FireDate.Value);
+                employee.DismissalEmployee(employeeDto.DismissalDate.Value);
             }
             await employeeRepository.InsertAsync(employee);
             
