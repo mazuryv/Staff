@@ -14,11 +14,11 @@ namespace Staff.Domain
             HireDate = hireDate;
         }
 
-        public static EmployeePosition FromPersistence(Position position, DateTime hireDate, DateTime? fireDate)
+        public static EmployeePosition FromPersistence(Position position, DateTime hireDate, DateTime? dismissalDate)
         {
             var employeePosition = new EmployeePosition(position, hireDate)
             {
-                DismissalDate = fireDate
+                DismissalDate = dismissalDate
             };
             return employeePosition;
         }

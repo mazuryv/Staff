@@ -21,7 +21,7 @@ namespace Staff.Domain
             string lastName,
             string salary,
             DateTime hireDate,
-            DateTime? fireDate = null,
+            DateTime? dismissalDate = null,
             IEnumerable<EmployeePosition> employeePositions = null)
         {
             Id = id;
@@ -29,7 +29,7 @@ namespace Staff.Domain
             LastName = lastName;
             Salary = salary;
             HireDate = hireDate;
-            DismissalDate = fireDate;
+            DismissalDate = dismissalDate;
             if (employeePositions != null)
             {
                 this.employeePositions = new List<EmployeePosition>(employeePositions);
@@ -45,10 +45,10 @@ namespace Staff.Domain
             string lastName,
             string salary,
             DateTime hireDate,
-            DateTime? fireDate,
+            DateTime? dismissalDate,
             IEnumerable<EmployeePosition> employeePositions)
         {
-            return new Employee(id, firstName, lastName, salary, hireDate, fireDate, employeePositions);
+            return new Employee(id, firstName, lastName, salary, hireDate, dismissalDate, employeePositions);
         }
         public void ChangePosition(Position position, DateTime hireDate)
         {
@@ -68,11 +68,15 @@ namespace Staff.Domain
             employeePositions.Add(new EmployeePosition(position, hireDate));
         }
 
-        public void DismissalEmployee(DateTime fireDate)
+        public void DismissalEmployee(DateTime dismissalDate)
         {
-            DismissalDate = fireDate;
+            if (dismissalDate<HireDate)
+            {
+                throw new InvalidOperationException($"Dismissal date should be later than hire date");
+            }
+            DismissalDate = dismissalDate;
             var lastPosition = GetLastPosition();
-            lastPosition.DismissalDate = fireDate;
+            lastPosition.DismissalDate = dismissalDate;
         }
 
         private EmployeePosition GetLastPosition() => employeePositions.FirstOrDefault(item => item.DismissalDate == null);
